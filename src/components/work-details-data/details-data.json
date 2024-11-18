@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_work_details_data_details_data",
+  "info": {
+    "displayName": "detailsData",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "videoUrl": {
+      "type": "string",
+      "regex": "\\bhttps?:\\/\\/[^\\s/$.?#].[^\\s]*\\b",
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

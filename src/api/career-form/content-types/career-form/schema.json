@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "career_forms",
+  "info": {
+    "singularName": "career-form",
+    "pluralName": "career-forms",
+    "displayName": "CareerForm"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "emailID": {
+      "type": "email",
+      "required": true
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "workPortfolioLink": {
+      "type": "string",
+      "regex": "\\bhttps?:\\/\\/[^\\s/$.?#].[^\\s]*\\b"
+    },
+    "message": {
+      "type": "text"
+    },
+    "resume": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
