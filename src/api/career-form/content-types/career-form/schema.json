@@ -4,10 +4,11 @@
   "info": {
     "singularName": "career-form",
     "pluralName": "career-forms",
-    "displayName": "CareerForm"
+    "displayName": "CareerForm",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -26,20 +27,19 @@
       "type": "string",
       "required": true
     },
-    "workPortfolioLink": {
-      "type": "string",
-      "regex": "\\bhttps?:\\/\\/[^\\s/$.?#].[^\\s]*\\b"
+    "portfolioLink": {
+      "type": "string"
     },
     "message": {
       "type": "text"
     },
     "resume": {
-      "allowedTypes": [
-        "files"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "contact-us-form",
     "pluralName": "contact-us-forms",
-    "displayName": "ContactUsForm"
+    "displayName": "ContactUsForm",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,11 +27,11 @@
       "type": "string",
       "required": true
     },
-    "inquirySubject": {
+    "subject": {
       "type": "string",
       "required": true
     },
-    "inquiryMessage": {
+    "message": {
       "type": "string"
     }
   }
