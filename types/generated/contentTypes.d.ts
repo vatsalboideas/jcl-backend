@@ -414,7 +414,7 @@ export interface ApiContactUsFormContactUsForm
     singularName: 'contact-us-form';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -433,6 +433,37 @@ export interface ApiContactUsFormContactUsForm
     phoneNumber: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     subject: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFeaturedInstagramPostFeaturedInstagramPost
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'featured_instagram_posts';
+  info: {
+    description: '';
+    displayName: 'FeaturedInstagramPosts';
+    pluralName: 'featured-instagram-posts';
+    singularName: 'featured-instagram-post';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    link: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::featured-instagram-post.featured-instagram-post'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1037,6 +1068,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::career-form.career-form': ApiCareerFormCareerForm;
       'api::contact-us-form.contact-us-form': ApiContactUsFormContactUsForm;
+      'api::featured-instagram-post.featured-instagram-post': ApiFeaturedInstagramPostFeaturedInstagramPost;
       'api::work.work': ApiWorkWork;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

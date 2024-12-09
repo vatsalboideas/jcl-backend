@@ -23,11 +23,11 @@ module.exports = {
         try{
             await strapi.plugin('email').service('email').send({ // you could also do: await strapi.service('plugin:email.email').send({
               to: result.emailID,
-              from: process.env.TO_CAREERS_EMAILID, // e.g. single sender verification in SendGrid
+              from: process.env.TO_CONTACTUS_EMAILID, // e.g. single sender verification in SendGrid
             //   cc: 'valid email address',
             //   bcc: 'valid email address',
             //   replyTo: 'valid email address',
-              subject: 'Career form submitted successfully !',
+              subject: 'Contact us form submitted',
               text: `${result.fieldName} - ${result.lastName}`, // Replace with a valid field ID
               html: 'Hello world!', 
                 

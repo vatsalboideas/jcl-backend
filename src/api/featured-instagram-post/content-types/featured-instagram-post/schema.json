@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "featured_instagram_posts",
+  "info": {
+    "singularName": "featured-instagram-post",
+    "pluralName": "featured-instagram-posts",
+    "displayName": "FeaturedInstagramPosts",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
