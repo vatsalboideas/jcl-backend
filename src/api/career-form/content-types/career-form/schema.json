@@ -14,29 +14,36 @@
   "attributes": {
     "firstName": {
       "type": "string",
-      "required": true
+      "required": true,
+      "private": true
     },
     "lastName": {
-      "type": "string"
+      "type": "string",
+      "private": true
     },
     "emailID": {
       "type": "email",
-      "required": true
+      "required": true,
+      "private": true
     },
     "phoneNumber": {
       "type": "string",
-      "required": true
+      "required": true,
+      "private": true
     },
     "portfolioLink": {
-      "type": "string"
+      "type": "string",
+      "private": true
     },
     "message": {
-      "type": "text"
+      "type": "text",
+      "private": true
     },
     "resume": {
       "type": "media",
       "multiple": false,
       "required": true,
+      "private": true,
       "allowedTypes": [
         "files"
       ]

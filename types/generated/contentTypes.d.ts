@@ -384,20 +384,28 @@ export interface ApiCareerFormCareerForm extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    emailID: Schema.Attribute.Email & Schema.Attribute.Required;
-    firstName: Schema.Attribute.String & Schema.Attribute.Required;
-    lastName: Schema.Attribute.String;
+    emailID: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    firstName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    lastName: Schema.Attribute.String & Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::career-form.career-form'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.Text;
-    phoneNumber: Schema.Attribute.String & Schema.Attribute.Required;
-    portfolioLink: Schema.Attribute.String;
+    message: Schema.Attribute.Text & Schema.Attribute.Private;
+    phoneNumber: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    portfolioLink: Schema.Attribute.String & Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    resume: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    resume: Schema.Attribute.Media<'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -420,19 +428,25 @@ export interface ApiContactUsFormContactUsForm
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    emailID: Schema.Attribute.Email & Schema.Attribute.Required;
-    firstName: Schema.Attribute.String & Schema.Attribute.Required;
-    lastName: Schema.Attribute.String;
+    emailID: Schema.Attribute.String & Schema.Attribute.Private;
+    firstName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    lastName: Schema.Attribute.String & Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::contact-us-form.contact-us-form'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.String;
-    phoneNumber: Schema.Attribute.String & Schema.Attribute.Required;
+    message: Schema.Attribute.String & Schema.Attribute.Private;
+    phoneNumber: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    subject: Schema.Attribute.String & Schema.Attribute.Required;
+    subject: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

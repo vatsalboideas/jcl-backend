@@ -14,25 +14,30 @@
   "attributes": {
     "firstName": {
       "type": "string",
-      "required": true
+      "required": true,
+      "private": true
     },
     "lastName": {
-      "type": "string"
-    },
-    "emailID": {
-      "type": "email",
-      "required": true
+      "type": "string",
+      "private": true
     },
     "phoneNumber": {
       "type": "string",
-      "required": true
+      "required": true,
+      "private": true
     },
     "subject": {
       "type": "string",
-      "required": true
+      "required": true,
+      "private": true
     },
     "message": {
-      "type": "string"
+      "type": "string",
+      "private": true
+    },
+    "emailID": {
+      "type": "string",
+      "private": true
     }
   }
 }
