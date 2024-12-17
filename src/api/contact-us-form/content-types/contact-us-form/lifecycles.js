@@ -61,28 +61,65 @@ module.exports = {
       });
     }
   },
+  // async afterCreate(event) {
+  //   // Connected to "Save" button in admin panel
+  //   const { result } = event;
+
+  //   try {
+  //     await strapi
+  //       .plugin('email')
+  //       .service('email')
+  //       .send({
+  //         // you could also do: await strapi.service('plugin:email.email').send({
+  //         to: process.env.FROM_EMAILID,
+  //         from: process.env.FROM_EMAILID, // e.g. single sender verification in SendGrid
+  //         //   cc: 'valid email address',
+  //         //   bcc: 'valid email address',
+  //         //   replyTo: 'valid email address',
+  //         subject: 'Contact us form submitted',
+  //         text: `${result.fieldName} - ${result.lastName}`, // Replace with a valid field ID
+  //         html: 'Hello world!',
+  //       });
+  //     return;
+  //   } catch (err) {
+  //     console.log(err);
+  //     return;
+  //   }
+  // },
   async afterCreate(event) {
     // Connected to "Save" button in admin panel
     const { result } = event;
 
     try {
-      await strapi
-        .plugin('email')
-        .service('email')
-        .send({
-          // you could also do: await strapi.service('plugin:email.email').send({
-          to: process.env.FROM_EMAILID,
-          from: process.env.FROM_EMAILID, // e.g. single sender verification in SendGrid
-          //   cc: 'valid email address',
-          //   bcc: 'valid email address',
-          //   replyTo: 'valid email address',
-          subject: 'Contact us form submitted',
-          text: `${result.fieldName} - ${result.lastName}`, // Replace with a valid field ID
-          html: 'Hello world!',
-        });
+      // Prepare the email content
+      const emailContent = `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <h2 style="color: #2a2a2a;">Contact Us Form Submission Recieved</h2>
+          <p><strong>First Name:</strong> ${result.firstName}</p>
+          <p><strong>Last Name:</strong> ${result.lastName}</p>
+          <p><strong>Email ID:</strong> ${result.emailID}</p>
+          <p><strong>Phone Number:</strong> ${result.phoneNumber}</p>
+          <p><strong>Subject:</strong> ${result.subject}</p>
+          <p><strong>Message:</strong><br />${result.message}</p>
+          <hr />
+          <p style="font-size: 0.9em; color: #666;">This email was sent automatically from the Contact Us form submission.</p>
+        </div>
+      `;
+
+      // Send the email
+      await strapi.plugin('email').service('email').send({
+        to: process.env.FROM_EMAILID, // Send to the email defined in FROM_EMAILID (could be your admin email)
+        from: process.env.FROM_EMAILID, // Sender's email address (can be same as the recipient)
+        subject: 'Contact Us Form Submitted',
+        html: emailContent, // Use HTML content
+      });
+
+      console.log(
+        `Email sent successfully to ${process.env.FROM_EMAILID} for ${result.firstName} ${result.lastName}, Contact US form submission`,
+      );
       return;
     } catch (err) {
-      console.log(err);
+      console.error('Error sending email:', err);
       return;
     }
   },
