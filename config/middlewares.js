@@ -9,16 +9,16 @@ module.exports = [
   'strapi::favicon',
   'strapi::public',
   {
-    name: "strapi::security",
+    name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "script-src": ["'self'", "'unsafe-inline'", "editor.unlayer.com"],
-          "frame-src": ["'self'", "editor.unlayer.com"],
+          'script-src': ["'self'", "'unsafe-inline'", 'editor.unlayer.com'],
+          'frame-src': ["'self'", 'editor.unlayer.com'],
           upgradeInsecureRequests: null,
         },
       },
     },
-  }
+  },
 ];

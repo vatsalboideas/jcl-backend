@@ -21,11 +21,6 @@
       "type": "string",
       "private": true
     },
-    "emailID": {
-      "type": "email",
-      "required": true,
-      "private": true
-    },
     "phoneNumber": {
       "type": "string",
       "required": true,
@@ -47,6 +42,11 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "emailID": {
+      "type": "string",
+      "private": true,
+      "required": true
     }
   }
 }

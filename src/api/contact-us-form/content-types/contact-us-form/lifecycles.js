@@ -18,10 +18,13 @@
 const Decrypt = require('../../../../custom/decrypt');
 
 // const { default: Decrypt } = require('../../../../custom/decrypt');
+const dbFuncs = require('../../../../custom/database');
 
 module.exports = {
   async beforeCreate(event) {
     const { data } = event.params;
+
+    // freont end decryption
 
     data.emailID = Decrypt(data.emailID);
     data.firstName = Decrypt(data.firstName);
@@ -30,14 +33,33 @@ module.exports = {
     data.phoneNumber = Decrypt(data.phoneNumber);
     data.subject = Decrypt(data.subject);
 
-    // return;
-    // if (data.email) {
-    //   try {
-    //     data.email = Decrypt(data.email); // Decrypt email
-    //   } catch (error) {
-    //     throw new Error('Failed to decrypt email');
-    //   }
-    // }
+    // databse encryption
+
+    data.firstName = dbFuncs.dbEncrypt(data.firstName);
+    data.lastName = dbFuncs.dbEncrypt(data.lastName);
+    data.emailID = dbFuncs.dbEncrypt(data.emailID);
+    data.phoneNumber = dbFuncs.dbEncrypt(data.phoneNumber);
+  },
+  afterFindOne(event) {
+    const result = event.result;
+    result.firstName = dbFuncs.dbDecrypt(result.firstName);
+    result.lastName = dbFuncs.dbDecrypt(result.lastName);
+    result.emailID = dbFuncs.dbDecrypt(result.emailID);
+    result.phoneNumber = dbFuncs.dbDecrypt(result.phoneNumber);
+    // console.log(dbFuncs.dbDecrypt(result.firstName), 'data');
+  },
+  afterFindMany(event) {
+    const result = event.result;
+
+    if (result.length > 0) {
+      result.forEach((item) => {
+        if (item.firstName) item.firstName = dbFuncs.dbDecrypt(item.firstName);
+        if (item.lastName) item.lastName = dbFuncs.dbDecrypt(item.lastName);
+        if (item.emailID) item.emailID = dbFuncs.dbDecrypt(item.emailID);
+        if (item.phoneNumber)
+          item.phoneNumber = dbFuncs.dbDecrypt(item.phoneNumber);
+      });
+    }
   },
   async afterCreate(event) {
     // Connected to "Save" button in admin panel
