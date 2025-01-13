@@ -1,11 +1,30 @@
 module.exports = [
   'strapi::logger',
   'strapi::errors',
-  'strapi::cors',
-  'strapi::poweredBy',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: ['http://localhost:3001'],
+    },
+  },
+
+  // 'strapi::poweredBy',
+  {
+    name: 'strapi::poweredBy',
+    config: {
+      poweredBy: 'Jio Creative Labs',
+    },
+  },
   'strapi::query',
   'strapi::body',
-  'strapi::session',
+  // 'strapi::session',
+  {
+    name: 'strapi::session',
+    config: {
+      maxAge: 600000,
+      http: true,
+    },
+  },
   'strapi::favicon',
   'strapi::public',
   {
