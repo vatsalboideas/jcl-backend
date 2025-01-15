@@ -4,4 +4,7 @@ module.exports = {
     maxLimit: 100,
     withCount: true,
   },
+  // cors: {
+  //   origin: 'http://localhost:3002',
+  // },
 };

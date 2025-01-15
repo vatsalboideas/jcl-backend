@@ -7,7 +7,11 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }) {
+    strapi.services[
+      'plugin::upload.upload'
+    ].formatFileInfo = require('./extensions/upload/overrides');
+  },
 
   /**
    * An asynchronous bootstrap function that runs before

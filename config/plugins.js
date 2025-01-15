@@ -19,38 +19,23 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: 'local', // You can use 'local' or another provider if needed
-      providerOptions: {},
+      // sizeLimit: 5 * 1024 * 1024, // 5 MB
+      provider: 'local',
+      providerOptions: {
+        sizeLimit: 5 * 1024 * 1024, // 5 MB
+        extensions: ['.pdf'],
+        allowedTypes: ['application/pdf'],
+      },
       actionOptions: {
         upload: {
           allowedTypes: [
             'application/pdf', // Allow PDFs
-            'image/webp', // Allow WebP images
-            'image/jpeg', // Allow JPG images
-            'image/png', // Allow PNG images
+            // 'image/webp', // Allow WebP images
+            // 'image/jpeg', // Allow JPG images
+            // 'image/png', // Allow PNG images
           ],
-          maxSize: 5 * 1024 * 1024, // 5 MB limit
         },
       },
     },
   },
-  // 'email-designer-5': {
-  //   enabled: false,
-  //   // Your custom configuration here
-  //   config: {
-  //     // Here the Merge Tags defined will be merged with the defaults above
-  //     mergeTags: {
-  //       company: {
-  //         name: 'Company',
-  //         mergeTags: {
-  //           name: {
-  //             name: 'Company Name',
-  //             value: 'ACME Corp',
-  //             sample: 'ACME Corp',
-  //           },
-  //         },
-  //       },
-  //     },
-  //   },
-  // },
 });

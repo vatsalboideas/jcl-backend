@@ -13,4 +13,9 @@ module.exports = ({ env }) => ({
     enabled: true,
     tasks: cronTasks,
   },
+  cors: {
+    origin: env('CORS_ORIGIN'),
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    headers: ['Content-Type', 'Authorization'],
+  },
 });
