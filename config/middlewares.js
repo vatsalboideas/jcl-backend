@@ -2,30 +2,37 @@ module.exports = [
   'strapi::logger',
   'strapi::errors',
   // 'strapi::poweredBy',
-  // {
-  //   name: 'strapi::cors',
-  //   config: {
-  //     origin: ['http://localhost:3001'],
-  //     credentials: false,
-  //   },
-  // },
+  // 'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: [
+        'http://localhost:3000',
+        'http://10.128.26.55:3000',
+        'http://10.128.26.55:3005',
+        'http://localhost:3000',
+      ],
+      credentials: false,
+    },
+  },
   {
     name: 'strapi::poweredBy',
     config: {
       poweredBy: 'Jio Creative Labs',
     },
   },
-  {
-    name: 'strapi::cors',
-    config: {
-      origin: 'http://localhost:3002', // Set to your frontend origin
-      credentials: false, // Allow credentials (cookies, tokens, etc.)
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
-      maxAge: 31536000,
-      keepHeadersOnError: false,
-    },
-  },
+  // {
+  //   name: 'strapi::cors',
+  //   config: {
+  //     'Access-Control-Allow-Origin': 'http://localhost:3002',
+  //     origin: 'http://localhost:3002', // Set to your frontend origin
+  //     credentials: false, // Allow credentials (cookies, tokens, etc.)
+  //     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+  //     headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+  //     maxAge: 31536000,
+  //     keepHeadersOnError: false,
+  //   },
+  // },
   'strapi::query',
   'strapi::body',
   // 'strapi::session',
@@ -39,21 +46,7 @@ module.exports = [
   },
   'strapi::favicon',
   'strapi::public',
-  // 'strapi::security',
-  {
-    name: 'strapi::security',
-    config: {
-      contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-          'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'market-assets.strapi.io'],
-          'media-src': ["'self'", 'data:', 'blob:', 'market-assets.strapi.io'],
-          upgradeInsecureRequests: null,
-        },
-      },
-    },
-  },
+  'strapi::security',
   // {
   //   name: 'strapi::ip',
   //   config: {

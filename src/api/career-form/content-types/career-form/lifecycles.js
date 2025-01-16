@@ -96,15 +96,15 @@ module.exports = {
     console.log(result, 'resule');
 
     try {
-      // Decrypt fields for email content
-      const decryptedData = {
-        emailID: dbFuncs.dbDecrypt(result.emailID),
-        firstName: dbFuncs.dbDecrypt(result.firstName),
-        lastName: dbFuncs.dbDecrypt(result.lastName),
-        message: dbFuncs.dbDecrypt(result.message),
-        phoneNumber: dbFuncs.dbDecrypt(result.phoneNumber),
-        portfolioLink: dbFuncs.dbDecrypt(result.portfolioLink),
-      };
+      // // Decrypt fields for email content
+      // const decryptedData = {
+      //   emailID: dbFuncs.dbDecrypt(result.emailID),
+      //   firstName: dbFuncs.dbDecrypt(result.firstName),
+      //   lastName: dbFuncs.dbDecrypt(result.lastName),
+      //   message: dbFuncs.dbDecrypt(result.message),
+      //   phoneNumber: dbFuncs.dbDecrypt(result.phoneNumber),
+      //   portfolioLink: dbFuncs.dbDecrypt(result.portfolioLink),
+      // };
 
       // Fetch the resume using the get query and populate it
       const careerForm = await strapi.db

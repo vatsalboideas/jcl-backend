@@ -26,11 +26,11 @@ module.exports = (config) => {
         '@': '/src',
       },
     },
-    server: {
-      cors: {
-        origin: ['http://localhost:3001'], // Match Strapi's origin
-        credentials: true,
-      },
-    },
+    // server: {
+    //   cors: {
+    //     origin: ['http://localhost:3001'], // Match Strapi's origin
+    //     credentials: true,
+    //   },
+    // },
   });
 };
